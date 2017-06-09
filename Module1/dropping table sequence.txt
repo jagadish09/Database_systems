@@ -1,0 +1,11 @@
+drop table courses_info;
+drop table degreqs;
+drop table nocoursesreq;
+drop table COURSES_KUTAUGHT;
+drop table degrees;
+drop table courses;
+drop table lo;
+drop table KU;
+drop table KA;
+drop table LOLEVEL;
+COMMIT;

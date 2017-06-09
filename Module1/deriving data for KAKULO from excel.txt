@@ -1,0 +1,86 @@
+Converting file 'acm-cs2013-knowledge-areas' to table 'KA' :-
+
+I have created a table KA with column names 'KACODE' and 'KANAME'
+I have also created a KA.CSV file in folder 'Data files' folder with column names 'KACODE' and 'KANAME'.
+I have copied all the the data from file 'acm-cs2013-knowledge-areas' and pasted it in 'KA.CSV' file under columns names 'KACODE' and 'KANAME'.
+
+For eg- KACODE column has 'AL' and KANAME column has 'Algorithms and Complexity'.
+
+Then using sql developer command 'Import Data' i have imported data from 'KA.csv' into 'KA' table.
+See file 'tabledescription' for more details about this table.
+
+
+
+Converting file 'acm-cs2013-learning-outcomes' into table 'KU' :-
+
+STEP 1:-
+
+select all the data from file 'acm-cs2013-learning-outcomes' using 'SHIFT'+'CTRL'+'END'.
+by doing this we will also select data of KA's , KU's from line 1437.
+
+hold shift and press up arrow key till line 1436.
+
+copy whole data into a new excel sheet.
+
+
+STEP 2:-
+
+Select all the data in the new excel sheet and now go to 'HOME' in the excel sheet and at the right side at top you will have 'SORT and filter'. 
+after clicking on that you will see filter button. click on that.
+
+go to learning outcome column and click on drop down button. in that remove select all and only select 'blanks' which is at the bottom in drop down list.
+
+now copy only data under 'KA','ku','tier','level' COLUMNS into a new excel sheet.
+
+
+STEP 3:-
+
+select whole data in this sheet and apply 'filter'.
+go to column 'KU' and in the drop down list remove blanks which is at the end.
+now copy whole data and pste it into a new excel sheet.
+
+STEP 4:-
+
+Now change the column name of 'Tier' to 'MINTIER1' and column name of 'Level' to 'MINTIER2'.
+and then select column A and right click on it and cut the whole column and insert cut cells infront of column 'MINTIER1'.
+now insert a new column infront of column 'KU' and name the column name as 'KUID'.
+fill each row from 1 till the end of the rows.
+
+This new sheet I named it as 'KU.csv' and using SQL developer i imported that data into table 'KU' which contains 'KUID','KU','KA','MINTIER1' AND 'MINTIER2' columns. 
+See file 'tabledescription' for more details about this table.
+
+
+Converting file 'acm-cs2013-learning-outcomes' into table 'LO' :-
+
+STEP 1:-
+
+Follow 'STEP 1' from 'Converting file 'acm-cs2013-learning-outcomes' into table 'KU''.
+
+STEP 2:-
+
+Apply Filter to entire data in the new sheet.
+Select 'learning Outcome' column and 'select all' and 'remove blanks'.
+now you will have rows where learning outcomes are not null.
+
+now select all columns, copy whole data and paste into a new excel sheet.
+
+STEP 3:-
+
+import this data into a new table 'LOTEST' with columns 'KA'(varchar2(5),'KU'(VARCHAR2(200)),'tier'(number),'LOLEVEL'(VARCHAR2(30)),NUM(NUMBER),lo varchar2(500).
+Details about this TABLE are not mentioned in file ''tabledescription' as this is a dummy table created to extract correct data from excel.
+
+IMPORT SHEET1 data into a new table 'KUTEST' with columns 'KA'(varchar2(50)), 'KU'(varchar2(200)).
+Details about this are not mentioned in file ''tabledescription'.
+
+write a query as this 'select num lono,Lt.LO LO,lt.tier TIER,lt.LOLEVEL LOLEVEL,ku.kuid kuid from KA ka,KU ku,LOTEST lt where
+lt.ka=ka.kacode
+and ku.ku=lt.ku
+and ku.KA=ka.kacode
+order by kuid,lt.num'.
+
+Sum rows were missing as there was a space at end of some KU's from the file 'acm-cs2013-learning-outcomes'.i rectified all those and extracted whole data.
+i have exported the output of above query into a file 'LO.csv'.
+
+then i have imported this data using import data in sql developer.
+
+

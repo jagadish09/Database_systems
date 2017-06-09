@@ -1,0 +1,14 @@
+Load files in the following order:-
+
+Using import data in sql developer i have imported the following files.
+
+lolevel.xlsx into table LOLEVEL
+ka.xlsx into table KA
+ku.xlsx into table KU
+lo.xlsx into table LO
+courses.xlsx into table COURSES
+degrees.xlsx into table DEGREES
+nocoursesreq.xlsx into table NOCOURSESREQ
+degreqs.xlsx into table DEGREQS
+courses_kutaught.xlsx into table courses_kutaught
+courses_info.xlsx into table COURSES_INFO

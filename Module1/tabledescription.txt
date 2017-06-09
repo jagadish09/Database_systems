@@ -1,0 +1,76 @@
+TABLE 'LOLEVEL':-
+
+This table contains following rows:-
+LOLEVEL		NUM
+Familiarity	1
+Usage		2
+Assessment	3
+
+TABLE 'KA':-
+
+KACODE contains code of Knowledge Area.
+KANAME contains name of the Knowledge area.
+
+Table 'KU':-
+
+KUID is the id of the knowledge Unit
+KU is the name of that knowledge unit
+KA is the foreign key referencing to KACODE column of KA table.
+mintier1 is the minimum tier 1 hoiurs required acordint to ACM guidelines.
+mintier2 is the minimum tier 2 hoiurs required acordint to ACM guidelines.
+
+Table 'LO':-
+
+LONO is the number of the Leaarning outcome belonging to a particular KU.
+LO is the description of learning outcome.
+TIER tells whether the LO is tier 1 or tier 2 or tier3
+LOLEVEL tells about the level of that LO which is either familiarity or assessment or usage referencing LOLEVEL column of LOLEVEL table.
+KUID which is foreign key referencing to KUID of table KU.
+
+Table 'COURSES':-
+
+COURSEID is the id of the course
+COURSENAME is the course name
+COURSEDESC is the description of each course
+
+Table 'DEGREES':-
+
+DEGCODE is the degree code for a degree
+DEGNAME is the name of the degree.
+
+Table 'NOCOURSESREQ':-
+
+column 'DEGCODE' contains degreecode.
+divided each requirement for the degree into options.for eg. cs degree requires 
+'STAT 2010' or 'STAT 2050' i have given option 1 to each of these courses in table 'DEGREQS'.
+and column 'NOCOURSESREQ' in this table tells how many courses must be taken in that option. in this case it is 1.
+so 'OPTIONS' column contains 1 and 'NOCOURSESREQ' column contains 1.
+
+Table 'DEGREQS':-
+
+this table tells about what are requirements to get a degree
+
+DEGCODE is the degree code taken from degrees table.
+COURSEID is the courseid taken from courses table.
+Options is the foreign key referencing 'NOCOURSESREQ' table.
+
+Table 'COURSES_KUTAUGHT':-
+
+This table gives information about courseid's and kuid's provided by each course and tier1hrs and tier2 hrs taught for each kuid.
+COURSEID is courseid for that course.
+KUID is the kuid of each ku taught in each course.
+TIER1HRS contains tier1 hours taught in each KU.
+TIER2HRS contains tier2 hours taught in each KU.
+
+
+Table 'COURSES_INFO':-
+
+this table gives information about KU's, LO's and tier1 hrs and tier2 hrs of each LO that is provided by the university.
+
+COURSEID is the foreign key from courses_kutaught table.
+KUID is the foreign key taken from table 'COURSES_KUTAUGHT'
+LONO is the number of the LO taken from table 'LO'
+LOLEVEL is the level of this LO which is in familiarity or assessment or usage referencing LOLEVEL column of LOLEVEL table.
+
+
+

@@ -1,0 +1,35 @@
+query 1:-output file is:- LOsKUsforKA-'AL'.csv
+
+select * from LO,ku,KA
+where ku.ka=ka.kacode
+and ka.kacode='AL'
+and ku.kuid=lo.kuid;
+
+
+query 2:-output file is:- numberofKA's.csv
+
+select count(*) from KA;
+
+query 3:-output file is:- coscreqcourses.csv
+
+select c.* from courses c,degreqs dr where dr.degcode='COSC' and c.courseid=dr.courseid;
+
+query 4:-output file is:- KUtaughtinrequiredcosccourses.csv
+
+select distinct ku.* from KU ku,courses_kutaught ck,degreqs dr
+where ck.courseid=dr.courseid
+and dr.degcode='COSC'
+and ck.kuid=ku.kuid;
+
+
+query 5:-output file is:- numberofLOs.csv
+
+select count(*) from LO;
+
+query 6:-output file is:- KUsLOsineachcourse.csv
+
+select * from courses_info;
+
+query 7:-output file is:- LOdetailsofeachcourse.csv
+
+select ci.courseid,lo.LO  from LO lo,courses_info ci where ci.lono=lo.lono and ci.kuid=lo.kuid
